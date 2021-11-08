@@ -10,20 +10,17 @@ public class PrintEntitiesCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		// console only cmd
-		if (sender instanceof Player) {
-			return false;
-		}
+		Boolean isPlayer = sender instanceof Player;
 
-		printEntityTypes();
+		for (EntityType type : EntityType.values()) {
+			if (isPlayer) {
+				sender.sendMessage(type + "");
+			} else {
+				System.out.println(type);
+			}
+		}
 
 		return false;
-
 	}
 
-	private static void printEntityTypes() {
-		for (EntityType type : EntityType.values()) {
-			System.out.println(type);
-		}
-	}
 }

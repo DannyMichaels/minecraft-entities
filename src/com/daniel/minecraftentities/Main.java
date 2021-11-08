@@ -14,6 +14,8 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		System.out.println("ENTITIES PLUGIN ENABLED");
+
 		useCommands();
 
 		Entity zombieEntity = createEntity("zombie");
@@ -34,7 +36,7 @@ public class Main extends JavaPlugin implements Listener {
 		getCommand("print_entities").setExecutor(new PrintEntitiesCommand());
 	}
 
-	private static Entity createEntity(String entityName) {
+	public Entity createEntity(String entityName) {
 		Location entityLocation = new Location(Bukkit.getWorld("world"), 0, 0, 0);
 
 		// EntityType.ZOMBIE, EntityType.PIG, etc...
